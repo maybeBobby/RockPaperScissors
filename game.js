@@ -48,52 +48,41 @@ function decideWinner(computerChoice, playerChoice) {
 };
 
 
-function playRound(numCompwins, numPlaywins, numTies) {
+function playRound(choice) {
     let computerChoice;
-    let playerChoice;
+    let playerChoice = choice;
     let winner;
+    let numCompwins = 0;
+    let numPlaywins = 0;
+    let numTies = 0;
 
     computerChoice = getComputerChoice();
-    playerChoice = getPlayerChoice();
     console.log("Computer choice: " + computerChoice);
     console.log("Player choice: " + playerChoice);
 
     winner = decideWinner(computerChoice, playerChoice);
     console.log("Winner: " + winner);
-    return winner;
-};
-
-function game() {
-
-    let numCompwins = 0;
-    let numPlaywins = 0;
-    let numTies = 0;
-    let winner;
-
-    for (i=0; i<5; i++) {
-        winner = playRound(numCompwins, numPlaywins, numTies);
-        if (winner == "computer") {
-            numCompwins++;
-            console.log("Number of computer wins: " + numCompwins);
-            console.log("Number of player wins: " + numPlaywins);
-            console.log("Number of ties: " + numTies)
-            console.log("----------------------------");
-        }
-        else if (winner  == "player") {
-            numPlaywins++;
-            console.log("Number of computer wins: " + numCompwins);
-            console.log("Number of player wins: " + numPlaywins);
-            console.log("Number of ties: " + numTies)
-            console.log("----------------------------");
-        }
-        else {
-            numTies++;
-            console.log("Number of computer wins: " + numCompwins);
-            console.log("Number of player wins: " + numPlaywins);
-            console.log("Number of ties: " + numTies)
-            console.log("----------------------------");
-        }; 
-    };
+    if (winner == "computer") {
+        numCompwins++;
+        console.log("Number of computer wins: " + numCompwins);
+        console.log("Number of player wins: " + numPlaywins);
+        console.log("Number of ties: " + numTies)
+        console.log("----------------------------");
+    }
+    else if (winner  == "player") {
+        numPlaywins++;
+        console.log("Number of computer wins: " + numCompwins);
+        console.log("Number of player wins: " + numPlaywins);
+        console.log("Number of ties: " + numTies)
+        console.log("----------------------------");
+    }
+    else {
+        numTies++;
+        console.log("Number of computer wins: " + numCompwins);
+        console.log("Number of player wins: " + numPlaywins);
+        console.log("Number of ties: " + numTies)
+        console.log("----------------------------");
+    }; 
 
     if (numCompwins > numPlaywins) {
         console.log("The computer beat you! Better luck next time...");
@@ -104,5 +93,9 @@ function game() {
     else {
         console.log("It's a tie! Try again!");
     };
+};
 
-}
+const rock_button = document.addEventListener('click', playRound('rock'));
+const paper_button = document.addEventListener('click', playRound('paper'));
+const scissors_button = document.addEventListener('click', playRound('scissors'));
+const divResults = document.addElement
